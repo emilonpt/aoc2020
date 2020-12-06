@@ -49,7 +49,7 @@ def d5p2():
 
 def get_sits():
 
-    #similar to d4p1 but returns sits instead of max of tot_check
+    #similar to d5p1 but returns sits instead of max of tot_check
 
     with open('d5p1.csv') as file: #read input from csv
         reader = csv.reader(file)
