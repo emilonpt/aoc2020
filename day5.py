@@ -1,6 +1,6 @@
 import csv
 
-def d4p1():
+def d5p1():
 
     with open('d5p1.csv') as file: #read input from csv
         reader = csv.reader(file)
@@ -31,7 +31,7 @@ def d4p1():
     return max(tot_check)
             
 
-def d4p2():
+def d5p2():
     sits = get_sits()
     all_sits = [(r,c) for r in range(0,128) for c in range(0,8)]
     sits_ids = [r*8+c for r,c in sits]
@@ -82,5 +82,5 @@ def get_sits():
 
 
 if __name__ == "__main__":
-    #print(d4p1())
-    print(d4p2())
+    #print(d5p1())
+    print(d5p2())
