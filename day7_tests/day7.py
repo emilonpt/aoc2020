@@ -76,29 +76,16 @@ def d7p2(inputfile):
 
         return res
 
-def get_bags_num(bags, parent_bag, sum=0,mult=1,level=""):
-    level += "." #before each print message, just for "debugging"
+def get_bags_num(bags, parent_bag, count_bags=0):
     try:
         for child in bags[parent_bag]:
+            count_bags += int(child['q'])
 
-            sum += int(child['q']) * int(mult)
-
-            #print('\n{}Added {} bag(s) corresponding to {} child {} to parent {} (this considers a multiplier of {})'.format(level,int(child['q'])*int(mult),child['q'],child['b'],parent_bag,mult))
-            #print('{}Sum is now {}'.format(level,sum))
-            if child['b'] in bags:
-                mult = int(child['q'])*mult
-                #print('\n{}Will now add {} child bags to sum using a multiplier of {}:'.format(level,child['b'],mult))
-            
-                sum += get_bags_num(bags, child['b'], 0,mult,level)
-
-            else:
-                #print('\n{}{} has no children so sum does not change.\n'.format(level,child['b']))
-                pass
+            count_bags += get_bags_num(bags, child['b']) *int(child['q'])
 
     except KeyError:
-        pass
-    #print(level, sum)
-    return sum
+        return 0
+    return count_bags
 
 if __name__ == "__main__":
     #DO NOT uncomment more than 1 of these at the same time - for some reason they're not independent
@@ -106,4 +93,7 @@ if __name__ == "__main__":
     #print(d7p2('test1.csv'))#should output 32
     #print(d7p2('test2.csv'))#should output 126
     #print(d7p2('input.csv'))#should output answer
+    #print(d7p2('test3.csv'))#should output 33
+    #print(d7p2('test4.csv'))#should output 6
+    print(d7p2('test5.csv'))#should output 45
     pass
