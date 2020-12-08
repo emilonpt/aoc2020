@@ -72,6 +72,9 @@ def d7p2(inputfile):
         targets =  ['shiny gold']
         bags = get_bags_q(targets,bag_types)
 
+        for b in bags:
+            bags[b] = list({v['b']:v for v in bags[b]}.values()) # fix duplicates in bags
+
         res = get_bags_num(bags,'shiny gold')
 
         return res
@@ -88,12 +91,7 @@ def get_bags_num(bags, parent_bag, count_bags=0):
     return count_bags
 
 if __name__ == "__main__":
-    #DO NOT uncomment more than 1 of these at the same time - for some reason they're not independent
-    #haven't looked into why
-    #print(d7p2('test1.csv'))#should output 32
-    #print(d7p2('test2.csv'))#should output 126
-    #print(d7p2('input.csv'))#should output answer
-    #print(d7p2('test3.csv'))#should output 33
-    #print(d7p2('test4.csv'))#should output 6
-    print(d7p2('test5.csv'))#should output 45
+    #print(d7p1())
+    print(d7p2('d7p1.csv'))#should output answer
+
     pass
